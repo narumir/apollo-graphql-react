@@ -30,6 +30,7 @@ const closeServer = (): Promise<void> => {
 const close = async () => {
   await closeServer();
   console.info("Application closed.");
+  process.exit(0);
 };
 process.on("SIGINT", close);
 process.on("SIGTERM", close);

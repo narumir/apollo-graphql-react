@@ -4,11 +4,8 @@ import {
 } from "apollo-server-express"
 
 const typeDefs = gql`
-  type App {
-    version: String
-  }
   type Query {
-    getVersion: App
+    version: String
   }
   type Mutation {
     _empty: String
@@ -17,14 +14,14 @@ const typeDefs = gql`
 
 const resolver: IResolvers = {
   Query: {
-    getVersion: () => ({ version: "1.0.0" })
+    version: () => "1.0.0"
   },
   Mutation: {
     _empty: () => "",
   },
 };
 
-export const AppSchema = {
+export const BaseSchema = {
   typeDefs,
   resolver,
 };

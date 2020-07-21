@@ -4,11 +4,14 @@ import {
 import {
   HealthController,
 } from "../controllers";
+import {
+  asyncHandler,
+} from "../middlewares";
 
 const rootRouter = Router();
 
 rootRouter
-  .use("/", HealthController.check);
+  .get("/", asyncHandler(HealthController.check));
 
 export {
   rootRouter,

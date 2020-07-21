@@ -9,5 +9,6 @@
   ],
   "inspect": true,
   "verbose": true,
-  "watch": "src"
+  "watch": "src",
+  "delay": "2500"
 }

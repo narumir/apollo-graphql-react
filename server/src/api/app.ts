@@ -12,7 +12,7 @@ import {
 } from "src/graphql";
 
 const app = express();
-app.use("/", rootRouter);
+app.use(rootRouter);
 
 const apolloConfig: ApolloServerExpressConfig = {
   schema: schema,

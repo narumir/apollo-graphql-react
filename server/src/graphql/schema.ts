@@ -4,16 +4,16 @@ import {
   ITypeDefinitions,
 } from "apollo-server-express";
 import {
-  AppSchema,
+  BaseSchema,
   BookSchema,
 } from "./index";
 
 const typeDefs: ITypeDefinitions = [
-  AppSchema.typeDefs,
+  BaseSchema.typeDefs,
   BookSchema.typeDefs,
 ];
 const resolvers: IResolvers[] = [
-  AppSchema.resolver,
+  BaseSchema.resolver,
   BookSchema.resolver,
 ];
 
