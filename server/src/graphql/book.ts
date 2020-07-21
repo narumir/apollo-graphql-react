@@ -15,7 +15,7 @@ const typeDefs = gql`
 const resolver: IResolvers = {
   Query: {
     getBook: () => ({ title: "hello" })
-  }
+  },
 };
 
 export const BookSchema = {

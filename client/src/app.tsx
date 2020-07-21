@@ -1,27 +1,27 @@
 import React from 'react';
 import {
-  gql,
-} from "apollo-boost";
-import {
   useQuery,
 } from "@apollo/react-hooks";
-
-const query = gql`
-  query {
-    version
-  }
-`;
-
-interface VersionQuery {
-  version: string;
-}
+import {
+  APPLICATION_VERSION,
+  ApplicationVersion,
+} from "src/graphql";
 
 export const App = () => {
-  console.log("render");
-  const { data, loading, error,} = useQuery<VersionQuery>(query, {});
+  const {
+    data,
+    loading,
+    error,
+  } = useQuery<ApplicationVersion>(APPLICATION_VERSION, {});
+  if (loading) {
+    return (<span>데이터 로드중...</span>);
+  }
+  if (error || data == null) {
+    return (<span>오류가 발생하였습니다. 관리자에게 문의 해주세요.</span>);
+  }
   return (
     <div>
-      data
+      version: {data.version}
     </div>
   );
 };
