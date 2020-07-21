@@ -5,16 +5,16 @@ import {
 } from "apollo-server-express";
 import {
   BaseSchema,
-  BookSchema,
+  TodoSchema,
 } from "./index";
 
 const typeDefs: ITypeDefinitions = [
   BaseSchema.typeDefs,
-  BookSchema.typeDefs,
+  TodoSchema.typeDefs,
 ];
 const resolvers: IResolvers[] = [
   BaseSchema.resolver,
-  BookSchema.resolver,
+  TodoSchema.resolver,
 ];
 
 export const schema = makeExecutableSchema({

@@ -1,29 +1,22 @@
 import express from "express";
 import {
-  ApolloServer,
-  ServerRegistration,
-  ApolloServerExpressConfig,
-} from "apollo-server-express";
+  apollo,
+} from "src/graphql/client";
 import {
   rootRouter,
 } from "./routers";
-import {
-  schema,
-} from "src/graphql";
+import type {
+  ServerRegistration,
+} from "apollo-server-express";
 
 const app = express();
 app.use(rootRouter);
 
-const apolloConfig: ApolloServerExpressConfig = {
-  schema: schema,
-  playground: process.env.NODE_ENV !== "production",
-};
-const registeration: ServerRegistration = {
+const registration: ServerRegistration = {
   app: app,
   path: "/graph",
 };
-const apollo = new ApolloServer(apolloConfig);
-apollo.applyMiddleware(registeration);
+apollo.applyMiddleware(registration);
 
 export {
   app,
