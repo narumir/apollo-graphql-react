@@ -9,7 +9,7 @@ import {
 } from "./app";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graph",
+  uri: process.env.REACT_APP_GRAPH_URI,
 });
 const element = (
   <ApolloProvider client={client}>

@@ -3,8 +3,7 @@ import {
   useQuery,
 } from "@apollo/react-hooks";
 import {
-  APPLICATION_VERSION,
-  ApplicationVersion,
+  TODOS,
 } from "src/graphql";
 
 export const App = () => {
@@ -12,7 +11,11 @@ export const App = () => {
     data,
     loading,
     error,
-  } = useQuery<ApplicationVersion>(APPLICATION_VERSION, {});
+  } = useQuery(TODOS, {
+    variables: {
+      id: "test"
+    }
+  });
   if (loading) {
     return (<span>데이터 로드중...</span>);
   }
@@ -21,7 +24,7 @@ export const App = () => {
   }
   return (
     <div>
-      version: {data.version}
+      version: {JSON.stringify(data)}
     </div>
   );
 };
