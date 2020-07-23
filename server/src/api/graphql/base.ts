@@ -1,6 +1,8 @@
 import {
-  IResolvers,
   gql,
+} from "apollo-server-express";
+import type {
+  IResolvers,
 } from "apollo-server-express"
 
 const typeDefs = gql`
@@ -8,6 +10,9 @@ const typeDefs = gql`
     version: String
   }
   type Mutation {
+    _empty: String
+  }
+  type Subscription {
     _empty: String
   }
 `;
@@ -19,6 +24,9 @@ const resolver: IResolvers = {
   Mutation: {
     _empty: () => "",
   },
+  Subscription: {
+    _empty: () => "",
+  }
 };
 
 export const BaseSchema = {

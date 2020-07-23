@@ -1,19 +1,40 @@
 import {
-  Server,
   createServer,
 } from "http";
 import {
-  app,
-} from "./api";
+  assignEnvironment,
+} from "./param-store";
+import type {
+  Server,
+} from "http";
 
-let server: Server = createServer(app);
+let server: Server;
 const port = parseInt(process.env.PORT) || 4000;
 
-const main = async () => {
-  server.listen(port, () => {
-    console.info(`application started at ${port}`);
+assignEnvironment()
+  .then(() => import("./api"))
+  .then(({ app }) => {
+    server = createServer(app);
+    return startServer(server);
+  })
+  .then(() => {
+    console.log(`Application started at ${port}.`);
+  })
+  .catch((err) => {
+    console.error(err);
+    return close();
+  });
+
+const startServer = (
+  server: Server,
+): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    server.listen(port, () => {
+      return resolve();
+    });
   });
 };
+
 const closeServer = (): Promise<void> => {
   return new Promise((resolve, reject) => {
     if (!server.listening) {
@@ -27,15 +48,13 @@ const closeServer = (): Promise<void> => {
     });
   });
 };
+
 const close = async () => {
   await closeServer();
   console.info("Application closed.");
   process.exit(0);
 };
+
 process.on("SIGINT", close);
 process.on("SIGTERM", close);
 process.on("SIGQUIT", close);
-
-main().catch((err) => {
-  console.error(err);
-});

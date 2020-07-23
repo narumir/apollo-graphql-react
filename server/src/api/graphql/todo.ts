@@ -4,7 +4,7 @@ import {
 } from "apollo-server-express"
 import {
   ApolloContext,
-} from "./client";
+} from "../middlewares";
 
 const typeDefs = gql`
   type Todo {

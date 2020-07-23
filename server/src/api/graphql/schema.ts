@@ -1,12 +1,14 @@
 import {
   makeExecutableSchema,
-  IResolvers,
-  ITypeDefinitions,
 } from "apollo-server-express";
 import {
   BaseSchema,
   TodoSchema,
 } from "./index";
+import type {
+  IResolvers,
+  ITypeDefinitions,
+} from "apollo-server-express";
 
 const typeDefs: ITypeDefinitions = [
   BaseSchema.typeDefs,
