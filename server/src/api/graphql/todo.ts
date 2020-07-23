@@ -1,10 +1,12 @@
 import {
-  IResolvers,
   gql,
 } from "apollo-server-express"
-import {
+import type {
+  IResolvers,
+} from "apollo-server-express";
+import type {
   ApolloContext,
-} from "../middlewares";
+} from "src/types";
 
 const typeDefs = gql`
   type Todo {

@@ -5,9 +5,6 @@ import type {
   Request,
   Response,
 } from "express";
-import type {
-  UnWrap,
-} from "src/types";
 
 export const apolloContext = async (
   req: Request,
@@ -21,5 +18,3 @@ export const apolloContext = async (
     throw new AuthenticationError("auth error");
   }
 };
-
-export type ApolloContext = UnWrap<ReturnType<typeof apolloContext>>;

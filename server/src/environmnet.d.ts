@@ -2,6 +2,6 @@
 declare module NodeJS {
   export interface ProcessEnv {
     PORT: string;
-    NODE_ENV: "production" | "development" | "staging" | "local";
+    NODE_ENV: "production" | "staging" | "development" | "local";
   }
 }
